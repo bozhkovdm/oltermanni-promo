@@ -1,0 +1,56 @@
+// USER VARIABLES SECTION
+
+$accent: #ffcd00 // Accent Color
+$accent2: #e63000 // Accent2 Color
+$fontsize: 16px // Body Font Size
+$textcolor: #5A1404 // Text Color
+$lineheight: 1.65 // Document Line Height
+$userfont: pfdin, sans-serif // User Font Family
+$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 30px
+$gutter: $grid-gutter-width
+
+//$container-max-widths: (sm: 540px,md: 720px,lg: 960px,xl: 1170px) !default
+
+
+
+// FONTS LOAD SECTION
+
+@mixin font($fname, $fstyle, $fweight, $furl)
+	@font-face
+		font-family: $fname
+		font-style: $fstyle
+		font-weight: $fweight
+		src: url($furl) format('woff2')
+
+@include font('pfdin', normal, 400, '../fonts/PFDinTextCondPro-regular.woff2')
+@include font('pfdin', normal, 700, '../fonts/PFDinTextCondPro-medium.woff2')
+@include font('pfdin', normal, 900, '../fonts/PFDinTextCondPro-bold.woff2')
+
+// GENERAL CSS SETTINGS
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body
+	font-family: $userfont
+	font-size: $fontsize
+	line-height: $lineheight
+	color: $textcolor
+	min-width: 320px
+	position: relative
+	overflow-x: hidden
+	margin: auto

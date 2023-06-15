@@ -1,0 +1,483 @@
+@use 'sass:math'
+@use 'sass:color'
+
+@import config
+
+html
+  background-color: $accent
+
+body
+  max-width: 1440px
+  background-color: $accent
+
+a
+  color: $textcolor !important
+  text-decoration: none
+  &:hover
+    color: lighten($textcolor, 20)
+
+.main-menu
+  list-style-type: none
+  display: flex
+  justify-content: space-between
+  margin: unset
+  text-transform: uppercase
+  padding-left: 0
+
+.header
+  z-index: 1001
+  position: inherit
+  background-color: #ffffff
+
+.header-row
+  display: flex
+  width: 100%
+  justify-content: space-between
+  height: 82px
+  align-items: center
+
+.main-menu__item
+  font-weight: 700
+  text-decoration: none
+  display: block
+
+.authorize-col
+  display: flex
+  justify-content: flex-end
+
+.authorize__elem
+  text-transform: uppercase
+  font-weight: 700
+  line-height: 40px
+  display: flex
+  align-self: center
+  justify-content: center
+  text-decoration: none
+
+  &:not(:last-child)
+    margin-right: 17px
+
+.sign-in-link
+  background: $accent
+  width: 120px
+  height: 40px
+  border-radius: 29px
+
+.s-hero
+  background-color: $accent
+  position: relative
+  clip-path: ellipse(60% 70% at 50% 210px)
+  z-index: 20
+  margin: 0
+  box-sizing: border-box
+
+
+.s-hero__inner
+  top: -16px
+  position: relative
+  margin: auto
+  background-color: $accent
+  clip-path: ellipse(60% 70% at 50% 210px)
+
+
+.hero-wrapper
+  display: flex
+  justify-content: space-between
+  position: relative
+  height: 710px
+
+.slogan
+  width: 558px
+  height: auto
+  z-index: 8
+  position: absolute
+  top: 36px
+  left: 10px
+
+.dwarf
+  height: auto
+  z-index: 9
+  position: absolute
+  top: 95px
+  left: 155px
+
+.kitchen
+  position: absolute
+  bottom: -20px
+  left: 0
+  z-index: 5
+
+.oltermanni-label
+  position: absolute
+  bottom: -30px
+  right: 0
+  z-index: 7
+
+.prize-label
+  width: 177px
+  height: 176px
+  position: absolute
+  right: 40px
+  top: 123px
+  z-index: 8
+
+.hero-bg-crop-bottom
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  margin-left: auto
+  margin-right: auto
+  width: 1729px
+  z-index: 3
+
+
+.s-promo
+  position: relative
+  top: -450px
+  margin-bottom: -450px
+  padding-top: 420px
+  min-height: 900px
+  z-index: 12
+  overflow: hidden
+  background: linear-gradient(180deg, #ECB200 0%, #FFCF00 78.83%)
+  background-size: contain
+  width: 100%
+  background-repeat: no-repeat
+
+
+
+.h1
+  font-size: 60px
+  font-weight: 700
+  margin-bottom: 30px
+  color: $accent2
+  text-transform: uppercase
+  text-align: center
+  position: relative
+  z-index: 12
+
+.shadowed-text
+  color: #ffffff
+  display: block
+  position: absolute
+  left: -3px
+  right: 0
+  top: -10px
+  margin-left: auto
+  margin-right: auto
+  width: 1000px
+  z-index: 11
+
+.promo-header-wrapper
+  position: relative
+  top: 70px
+  margin-bottom: 50px
+
+.yellow-solid-cropped
+  background-color: $accent
+  width: 100%
+  height: 300px
+  clip-path: ellipse(51% 25% at 48% 47%)
+  position: absolute
+  bottom: 0
+  left: 0
+  z-index: 10
+
+
+.cta-button
+  background-color: $accent2
+  display: block
+  color: #ffffff !important
+  font-weight: 700
+  text-decoration: none
+  text-transform: uppercase
+  padding: 15px 60px
+  border-radius: 29px
+  outline: 10px solid #ededed
+  text-align: center
+  max-width: 234px !important
+  &:hover
+    color: #fafafa
+
+.s-promo__cta-button
+  z-index: 100
+  position: relative
+  margin: auto
+  top: -40px
+
+.balloon-img
+  z-index: 15
+  position: absolute
+  top: 440px
+  left: 70px
+
+.curve-img
+  z-index: 15
+  position: absolute
+  top: 490px
+  right: 70px
+
+.curve-brown-img
+  z-index: 15
+  //position: absolute
+  position: relative
+  //top: -26px
+  top: 8px
+  left: 250px
+
+.promo-steps
+  z-index: 15
+  position: relative
+  width: 100%
+  display: flex
+  justify-content: space-between
+
+.promo-steps__icon-wrapper
+  height: 85px
+  display: flex
+  align-items: flex-end
+  justify-content: center
+
+.promo-steps__icon
+  //margin: auto
+  display: flex
+
+.promo-angle
+  width: 23px
+  height: 46px
+  margin-top: 110px
+
+//.promo-step-unit
+//  position: relative
+//  &:after
+//    content: ''
+//    width: 23px
+//    height: 46px
+//    position: absolute
+//    display: block
+//    background-image: url('../images/dist/promo-angle.svg')
+
+.promo-step-unit__label
+  margin-top: 20px
+  font-size: 20px
+  line-height: 22px
+  text-align: center
+
+
+.s-promo-participants
+  //padding-top: 70px
+  position: relative
+  height: 934px
+  //background-image: url('../images/dist/bg-white-solid-cropped.png')
+  //top: -78px
+  background-color: #ededed
+  clip-path: ellipse(60% 70% at 50% 210px)
+  //background-repeat: no-repeat
+  //&:after
+  //  content: ''
+  //  height: 100%
+  //  width: 100%
+  //  background-image: url('../images/dist/bg-white-gradient-cropped.png')
+  //  background-repeat: no-repeat
+  //  position: absolute
+  //  bottom: 15px
+  //  left: 0
+
+.s-promo-participants__inner
+  clip-path: ellipse(60% 70% at 50% 210px)
+  background: linear-gradient(180.05deg, #EDEDED 22.63%, #FFFFFF 99.95%)
+  height: 934px
+  top: -18px
+  position: relative
+  padding-top: 90px
+
+.h2
+  text-transform: uppercase
+  font-weight: 700
+  font-size: 36px
+  text-align: center
+  z-index: 1
+  position: relative
+  margin-bottom: 30px
+
+.participants-slider
+  z-index: 15
+
+
+.slick-arrow:before
+  content: ''
+  z-index: 1
+  position: absolute
+  width: 20px
+  height: 40px
+  background-repeat: no-repeat
+
+.slick-prev:before
+  background-image: url('../images/dist/angle-brown-left.svg')
+
+.slick-next:before
+  background-image: url('../images/dist/angle-brown-right.svg')
+
+.participants-slider__unit
+  display: flex
+  align-items: flex-end
+
+.participants-slider__text
+  text-align: center
+  margin-top: 10px
+  font-size: 18px
+
+.slider__image-wrapper
+  height: 305px
+  display: flex
+  align-items: flex-end
+
+.participants-slider__image
+  display: block
+  margin: auto
+
+
+.slick-dots
+ bottom: -65px
+
+.slick-dots li button:before
+  font-size: 32px
+  opacity: 1
+  content: ''
+  width: 11px
+  height: 11px
+  background-color: $textcolor
+  border-radius: 50% 50%
+
+.slick-dots li.slick-active button:before
+  opacity: 1
+  content: ''
+  width: 11px
+  height: 11px
+  background-color: unset
+  border: 1px solid $textcolor
+  border-radius: 50% 50%
+
+.slick-dots li button
+  display: flex
+  align-items: center
+  justify-content: center
+
+.slick-dots li
+  margin: 2px
+
+
+.footer
+  background-color: #ffffff
+  padding-top: 30px
+
+.footer__title
+  font-size: 16px
+  font-weight: 700
+  text-transform: uppercase
+
+.footer__phone
+  text-transform: uppercase
+  color: $accent2
+  font-weight: 700
+  font-size: 36px
+  line-height: 48px
+  margin-top: 5px
+  margin-bottom: 3px
+
+.copyright
+  font-size: 12px
+  line-height: 21px
+
+.footer__links
+  list-style-type: none
+  margin: 0
+  display: flex
+  justify-content: space-between
+
+.social
+  display: flex
+
+.footer__right-title
+  font-size: 16px
+  margin-bottom: 10px
+
+.footer-row
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+.footer__links-item
+  font-weight: 700
+  &:not(:last-child)
+    margin-right: 70px
+
+
+.footer__links
+  padding: 0
+
+
+.social__item
+  width: 32px
+  height: 32px
+  background-color: $accent
+  display: flex
+  align-items: center
+  justify-content: center
+  border-radius: 5px
+  &:not(:last-child)
+    margin-right: 10px
+
+
+
+.mobmenu-button
+  flex: 1 0 0
+  max-width: 40px
+  justify-content: center
+  display: none
+
+.mobile-menu
+  height: 100vh
+  width: 100vw
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 1000
+  padding-top: 80px
+  background-color: $accent
+  display: none
+  &.active
+    display: flex
+
+
+.mobile-menu
+  .main-menu,
+  .footer__links
+    flex-direction: column
+  li
+    width: 100%
+  ul
+    margin-bottom: 0
+  .social__item
+    background-color: #ECB200
+  .mobile-menu__social-descr
+    font-size: 14px
+    margin-bottom: 10px
+    margin-top: 20px
+
+.mobile-menu__middle-links
+  ul
+    list-style-type: none
+    padding-left: 0
+
+.scroll-locked
+  overflow: hidden
+  
+  
+
+
+
+
+
+@import "media"
