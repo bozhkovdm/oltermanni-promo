@@ -33,6 +33,7 @@
 		"gulp-less-glob": "^1.0.0",
 		"gulp-noop": "^1.0.1",
 		"gulp-postcss": "^9.0.1",
+		"gulp-replace": "^1.1.4",
 		"gulp-rsync": "0.0.9",
 		"gulp-sass": "^5.1.0",
 		"gulp-sass-glob": "^1.1.0",

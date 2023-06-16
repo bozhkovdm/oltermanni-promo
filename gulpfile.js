@@ -12,7 +12,12 @@ import webpack       from 'webpack'
 import TerserPlugin  from 'terser-webpack-plugin'
 import gulpSass      from 'gulp-sass'
 import dartSass      from 'sass'
+import sassglob      from 'gulp-sass-glob'
 const  sass          = gulpSass(dartSass)
+import less          from 'gulp-less'
+import lessglob      from 'gulp-less-glob'
+import styl          from 'gulp-stylus'
+import stylglob      from 'gulp-noop'
 import postCss       from 'gulp-postcss'
 import cssnano       from 'cssnano'
 import autoprefixer  from 'autoprefixer'
@@ -21,6 +26,7 @@ import imageResize   from 'gulp-image-resize'
 import changed       from 'gulp-changed'
 import concat        from 'gulp-concat'
 import rsync         from 'gulp-rsync'
+import replace         from 'gulp-replace'
 import {deleteAsync} from 'del'
 
 function browsersync() {
@@ -132,7 +138,7 @@ function images_svgs() {
 
 function buildcopy() {
 	return src([
-		'{app/js,app/css}/*.min.*',
+		'app/js/*.min.*',
 		'app/images/**/*.*',
 		'!app/images/src/**/*',
 		'app/fonts/**/*'
@@ -140,10 +146,26 @@ function buildcopy() {
 	.pipe(dest('dist'))
 }
 
+function buildstyles() {
+	return src(['app/css/*.css'])
+		.pipe(postCss([
+			autoprefixer({ grid: 'autoplace' }),
+			cssnano({ preset: ['default', { discardComments: { removeAll: true } }] })
+		]))
+		.pipe(concat('bundle.min.css'))
+		.pipe(dest('dist/css'))
+}
+
 async function buildhtml() {
 	let includes = new ssi('app/', 'dist/', '/**/*.html')
 	includes.compile()
 	await deleteAsync('dist/parts', { force: true })
+}
+
+function buildhtml_replace() {
+	return src(['**/index.html'])
+		.pipe(replace('<link rel="stylesheet" href="css/dev.css">', ''))
+		.pipe(dest('./'))
 }
 
 async function cleandist() {
@@ -176,6 +198,6 @@ function startwatch() {
 
 export { scripts, styles_dev, extstyles_dev, images, images_svgs, deploy }
 export let assets = series(scripts, styles_dev, images, images_svgs)
-export let build = series(cleandist, images, images_svgs, scripts, styles_dev, buildcopy, buildhtml)
+export let build = series(cleandist, images, images_svgs, scripts, styles_dev, buildcopy, buildstyles, buildhtml, buildhtml_replace)
 
 export default series(scripts, styles_dev, extstyles_dev, images, images_svgs, parallel(browsersync, startwatch))
